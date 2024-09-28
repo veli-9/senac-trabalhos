@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block main %}
+<div class="col-12">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Início</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Lista - Alunos</li>
+        </ol>
+</div>
+<div class="col-12">
+    <table class="table table-striped table-hover table-bordered" id="tabela">
+        <thead>
+            <tr>
+                <td>Código</td>
+                <td>Nome</td>
+                <td>RG</td>
+                <td>CPF</td>
+                <td>Data de Nascimento</td>
+                <td>Ação</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in alunos %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.nome }}</td>
+                <td>{{ item.rg }}</td>
+                <td>{{ item.cpf }}</td>
+                <td>{{ item.data_nascimento }}</td>
+                <td>
+                    <a href="/aluno/alterar/{{ item.id }}" class="btn btn-warning">Alterar</a>
+                    <button class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="/js/lista.js"></script>
+{% endblock %}
